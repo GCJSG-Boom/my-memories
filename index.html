@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时光札记 · My Memory Journal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- ===== 导航栏 ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">时光札记</a>
+            <ul class="nav-links">
+                <li><a href="#hero">首页</a></li>
+                <li><a href="#timeline">时光轴</a></li>
+                <li><a href="#gallery">映像集</a></li>
+                <li><a href="#music">音乐盒</a></li>
+                <li><a href="#about">关于</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="菜单">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== 英雄区 ===== -->
+    <header class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-particles" id="particles"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle fade-up">记录每一个值得铭记的瞬间</p>
+            <h1 class="hero-title fade-up delay-1">时光札记</h1>
+            <p class="hero-desc fade-up delay-2">用影像、声音与文字，<br>编织属于自己的时光长廊</p>
+            <div class="hero-scroll fade-up delay-3">
+                <span>向下探索</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== 时间轴 ===== -->
+    <main class="timeline-section" id="timeline">
+        <div class="section-header">
+            <h2 class="section-title">时光轴</h2>
+            <p class="section-subtitle">每一步，都算数</p>
+        </div>
+
+        <div class="timeline">
+
+            <!-- 条目示例 1 — 视频记忆 -->
+            <article class="timeline-card reveal" data-date="2025-12-25">
+                <div class="card-date">
+                    <span class="date-day">25</span>
+                    <span class="date-month">12月</span>
+                    <span class="date-year">2025</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-tag tag-video">
+                        <i class="fas fa-video"></i> 视频
+                    </div>
+                    <h3 class="card-title">圣诞夜的温暖</h3>
+                    <p class="card-text">
+                        那天晚上，朋友们聚在一起，交换礼物、分享故事。窗外飘着雪，屋内暖意融融。记录下这个美好的夜晚，愿每一年都能如此温馨。
+                    </p>
+                    <div class="card-media">
+                        <div class="video-wrapper">
+                            <video controls poster="https://picsum.photos/seed/christmas/800/450" preload="metadata">
+                                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放。
+                            </video>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-location"><i class="fas fa-map-marker-alt"></i> 北京 · 家中</span>
+                        <button class="card-more" data-expand>阅读更多 <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 条目示例 2 — 图片记忆 -->
+            <article class="timeline-card reveal" data-date="2025-11-08">
+                <div class="card-date">
+                    <span class="date-day">08</span>
+                    <span class="date-month">11月</span>
+                    <span class="date-year">2025</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-tag tag-photo">
+                        <i class="fas fa-camera"></i> 照片
+                    </div>
+                    <h3 class="card-title">秋日徒步 · 香山红叶</h3>
+                    <p class="card-text">
+                        深秋的香山，漫山遍野的红叶像火焰一样燃烧。沿着山路慢慢走，每一步都是风景。登顶那一刻，整座城市尽收眼底，所有的疲惫都烟消云散。
+                    </p>
+                    <div class="card-media card-media-grid">
+                        <div class="img-card" data-lightbox="香山红叶 · 山路">
+                            <img src="https://picsum.photos/seed/autumn1/600/400" alt="香山红叶山路" loading="lazy">
+                        </div>
+                        <div class="img-card" data-lightbox="香山红叶 · 远眺">
+                            <img src="https://picsum.photos/seed/autumn2/600/400" alt="山顶远眺" loading="lazy">
+                        </div>
+                        <div class="img-card" data-lightbox="香山红叶 · 落叶">
+                            <img src="https://picsum.photos/seed/autumn3/600/400" alt="满地落叶" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-location"><i class="fas fa-map-marker-alt"></i> 北京 · 香山公园</span>
+                        <button class="card-more" data-expand>阅读更多 <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 条目示例 3 — 音乐记忆 -->
+            <article class="timeline-card reveal" data-date="2025-09-15">
+                <div class="card-date">
+                    <span class="date-day">15</span>
+                    <span class="date-month">09月</span>
+                    <span class="date-year">2025</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-tag tag-music">
+                        <i class="fas fa-music"></i> 音乐
+                    </div>
+                    <h3 class="card-title">第一次弹成完整的曲子</h3>
+                    <p class="card-text">
+                        练了三个月的《River Flows in You》，今天终于能完整地弹下来了。虽然还有些磕绊，但那种成就感无与伦比。音乐真是最好的陪伴。
+                    </p>
+                    <div class="card-media">
+                        <div class="music-player-mini">
+                            <div class="music-cover">
+                                <img src="https://picsum.photos/seed/piano/200/200" alt="钢琴" loading="lazy">
+                                <div class="music-vinyl"></div>
+                            </div>
+                            <div class="music-info">
+                                <span class="music-title">River Flows in You</span>
+                                <span class="music-artist">Yiruma</span>
+                                <audio controls>
+                                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                                </audio>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-location"><i class="fas fa-map-marker-alt"></i> 家中 · 书房</span>
+                        <button class="card-more" data-expand>阅读更多 <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 条目示例 4 — 混合媒体 -->
+            <article class="timeline-card reveal" data-date="2025-07-20">
+                <div class="card-date">
+                    <span class="date-day">20</span>
+                    <span class="date-month">07月</span>
+                    <span class="date-year">2025</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-tag tag-travel">
+                        <i class="fas fa-plane"></i> 旅行
+                    </div>
+                    <h3 class="card-title">云南之旅 · 大理的风花雪月</h3>
+                    <p class="card-text">
+                        期待已久的大理之行终于成行。洱海的蓝、苍山的雪、古城的慢时光——一切都如诗如画。在洱海边骑行的那个下午，是我今年最放松的时刻。
+                    </p>
+                    <div class="card-media card-media-grid">
+                        <div class="img-card portrait" data-lightbox="大理 · 洱海骑行">
+                            <img src="https://picsum.photos/seed/dali1/400/600" alt="洱海骑行" loading="lazy">
+                        </div>
+                        <div class="img-card" data-lightbox="大理 · 古城夜色">
+                            <img src="https://picsum.photos/seed/dali2/600/400" alt="大理古城" loading="lazy">
+                        </div>
+                        <div class="img-card" data-lightbox="大理 · 苍山">
+                            <img src="https://picsum.photos/seed/dali3/600/400" alt="苍山风光" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-location"><i class="fas fa-map-marker-alt"></i> 云南 · 大理</span>
+                        <button class="card-more" data-expand>阅读更多 <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 条目示例 5 -->
+            <article class="timeline-card reveal" data-date="2025-05-01">
+                <div class="card-date">
+                    <span class="date-day">01</span>
+                    <span class="date-month">05月</span>
+                    <span class="date-year">2025</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-tag tag-life">
+                        <i class="fas fa-heart"></i> 生活
+                    </div>
+                    <h3 class="card-title">学会做第一道菜</h3>
+                    <p class="card-text">
+                        五一假期，决定学做一道红烧排骨。跟着视频教程一步步来，虽然卖相一般，但味道出奇地好！做饭这件事，好像也没有想象中那么难。
+                    </p>
+                    <div class="card-media">
+                        <div class="img-card" data-lightbox="第一次做的红烧排骨">
+                            <img src="https://picsum.photos/seed/cooking/800/450" alt="红烧排骨" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="card-location"><i class="fas fa-map-marker-alt"></i> 家中 · 厨房</span>
+                        <button class="card-more" data-expand>阅读更多 <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- ===== 图片画廊区 ===== -->
+    <section class="gallery-section" id="gallery">
+        <div class="section-header">
+            <h2 class="section-title">映像集</h2>
+            <p class="section-subtitle">定格光影，收藏美好</p>
+        </div>
+        <div class="gallery-masonry">
+            <div class="gallery-item tall" data-lightbox="映像 · 1">
+                <img src="https://picsum.photos/seed/g1/600/800" alt="Gallery image" loading="lazy">
+                <div class="gallery-item-overlay"><span>晨光</span></div>
+            </div>
+            <div class="gallery-item wide" data-lightbox="映像 · 2">
+                <img src="https://picsum.photos/seed/g2/800/500" alt="Gallery image" loading="lazy">
+                <div class="gallery-item-overlay"><span>海岸</span></div>
+            </div>
+            <div class="gallery-item" data-lightbox="映像 · 3">
+                <img src="https://picsum.photos/seed/g3/500/500" alt="Gallery image" loading="lazy">
+                <div class="gallery-item-overlay"><span>城市</span></div>
+            </div>
+            <div class="gallery-item" data-lightbox="映像 · 4">
+                <img src="https://picsum.photos/seed/g4/500/500" alt="Gallery image" loading="lazy">
+                <div class="gallery-item-overlay"><span>花语</span></div>
+            </div>
+            <div class="gallery-item wide tall" data-lightbox="映像 · 5">
+                <img src="https://picsum.photos/seed/g5/800/800" alt="Gallery image" loading="lazy">
+                <div class="gallery-item-overlay"><span>星空</span></div>
+            </div>
+            <div class="gallery-item" data-lightbox="映像 · 6">
+                <img src="https://picsum.photos/seed/g6/500/500" alt="Gallery image" loading="lazy">
+                <div class="gallery-item-overlay"><span>老街</span></div>
+            </div>
+            <div class="gallery-item tall" data-lightbox="映像 · 7">
+                <img src="https://picsum.photos/seed/g7/500/800" alt="Gallery image" loading="lazy">
+                <div class="gallery-item-overlay"><span>山间</span></div>
+            </div>
+            <div class="gallery-item wide" data-lightbox="映像 · 8">
+                <img src="https://picsum.photos/seed/g8/800/500" alt="Gallery image" loading="lazy">
+                <div class="gallery-item-overlay"><span>日落</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 音乐盒区 ===== -->
+    <section class="music-section" id="music">
+        <div class="section-header">
+            <h2 class="section-title">音乐盒</h2>
+            <p class="section-subtitle">旋律里的故事</p>
+        </div>
+        <div class="music-grid">
+            <!-- 音乐卡片 1 -->
+            <div class="music-card reveal">
+                <div class="music-card-cover">
+                    <img src="https://picsum.photos/seed/music1/400/300" alt="Album" loading="lazy">
+                    <div class="music-card-play"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="music-card-body">
+                    <h4>晴天</h4>
+                    <p>周杰伦</p>
+                    <audio controls>
+                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+            <!-- 音乐卡片 2 -->
+            <div class="music-card reveal">
+                <div class="music-card-cover">
+                    <img src="https://picsum.photos/seed/music2/400/300" alt="Album" loading="lazy">
+                    <div class="music-card-play"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="music-card-body">
+                    <h4>起风了</h4>
+                    <p>买辣椒也用券</p>
+                    <audio controls>
+                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+            <!-- 音乐卡片 3 -->
+            <div class="music-card reveal">
+                <div class="music-card-cover">
+                    <img src="https://picsum.photos/seed/music3/400/300" alt="Album" loading="lazy">
+                    <div class="music-card-play"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="music-card-body">
+                    <h4>平凡之路</h4>
+                    <p>朴树</p>
+                    <audio controls>
+                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 关于我 ===== -->
+    <section class="about-section" id="about">
+        <div class="about-card reveal">
+            <div class="about-avatar">
+                <img src="https://picsum.photos/seed/avatar/200/200" alt="头像" loading="lazy">
+            </div>
+            <h2>关于我</h2>
+            <p>
+                一个热爱生活、喜欢记录的人。<br>
+                这里是我的一方小天地，收藏着走过的路、听过的歌、看过的风景。<br>
+                希望这些碎片时光，也能温暖到偶然路过的你。
+            </p>
+            <div class="about-social">
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 页脚 ===== -->
+    <footer class="footer">
+        <p>© 2025 时光札记 · 用热爱记录生活</p>
+        <p class="footer-quote">「我们所经历的每个平凡的日常，也许就是连续发生的奇迹。」</p>
+    </footer>
+
+    <!-- ===== 灯箱 ===== -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <button class="lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+        <button class="lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightboxImg">
+            <p class="lightbox-caption" id="lightboxCaption"></p>
+        </div>
+    </div>
+
+    <!-- ===== 背景音乐播放器（全局） ===== -->
+    <div class="global-player" id="globalPlayer">
+        <button class="player-toggle" id="playerToggle" aria-label="音乐播放器">
+            <i class="fas fa-music"></i>
+        </button>
+        <div class="player-panel" id="playerPanel">
+            <div class="player-cover">
+                <img src="https://picsum.photos/seed/player/100/100" alt="Cover" id="playerCover">
+            </div>
+            <div class="player-info">
+                <span class="player-title" id="playerTitle">选择一首歌</span>
+                <span class="player-artist" id="playerArtist">点击音乐卡片播放</span>
+            </div>
+            <audio id="globalAudio"></audio>
+            <div class="player-controls">
+                <button id="playerPrev"><i class="fas fa-step-backward"></i></button>
+                <button id="playerPlay"><i class="fas fa-play"></i></button>
+                <button id="playerNext"><i class="fas fa-step-forward"></i></button>
+            </div>
+            <div class="player-volume">
+                <i class="fas fa-volume-up"></i>
+                <input type="range" id="playerVolume" min="0" max="100" value="50">
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
