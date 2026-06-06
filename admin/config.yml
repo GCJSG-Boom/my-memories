@@ -9,15 +9,15 @@ backend:
   repo: GCJSG-Boom/my-memories              # 你的 GitHub 用户名/仓库名
   branch: main                               # 主分支（提交到这个分支会自动触发 Vercel 部署）
   base_url: https://api.github.com           # GitHub API 地址
-  auth_endpoint: https://你的域名.vercel.app/api/auth  # ⚠️ 请替换为你的 Vercel 域名！
+  auth_endpoint: https://my-memories.vercel.app/api/auth
 
 # ----- 媒体文件（图片上传）存储位置 -----
 media_folder: "assets/uploads"               # 上传的图片存在仓库的哪个目录
 public_folder: "/assets/uploads"             # 图片在网站上的访问路径
 
 # ----- 网站地址 -----
-site_url: "https://你的域名.vercel.app"       # ⚠️ 请替换为你的 Vercel 域名
-display_url: "https://你的域名.vercel.app"
+site_url: "https://my-memories.vercel.app"
+display_url: "https://my-memories.vercel.app"
 logo_url: "https://picsum.photos/seed/logo/64/64"
 
 # ----- 后台界面语言 -----
