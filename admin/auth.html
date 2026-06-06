@@ -5,7 +5,6 @@
   <p id="msg">认证中...</p>
   <script>
     (function() {
-      // 从 cookie 中读取 GitHub token
       function getCookie(name) {
         var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
         return match ? match[2] : null;
@@ -15,7 +14,7 @@
       var msg = document.getElementById('msg');
 
       if (!token) {
-        msg.innerHTML = '<h2>尚未设置 GitHub Token</h2><p>请先访问 <a href="/admin/setup.html">设置页面</a></p><p style="color:#888;">只需设置一次，之后就能直接使用</p>';
+        msg.innerHTML = '<h2>尚未设置 Token</h2><p>请先访问 <a href="/admin/setup.html">/admin/setup.html</a> 进行设置</p><p style="color:#888;">只需设置一次</p>';
         return;
       }
 
@@ -23,19 +22,17 @@
       function sendToken() {
         if (sent) return;
         sent = true;
-        // 将 token 发送给 Decap CMS
-        window.opener.postMessage(
-          { token: token, provider: 'github', backendName: 'github' },
-          window.opener.location.origin
-        );
-        msg.textContent = '认证成功 ✅ 正在跳转...';
+        // ⚠️ 必须用 JSON.stringify，Decap CMS 会用 JSON.parse 解析
+        var data = JSON.stringify({ token: token, provider: 'github' });
+        window.opener.postMessage(data, window.opener.location.origin);
+        msg.textContent = '认证成功！正在跳转...';
         setTimeout(function() { window.close(); }, 500);
       }
 
-      // 方案1：等待 CMS 发送握手消息
-      window.addEventListener('message', function(e) { sendToken(); });
+      // 监听 CMS 握手消息（如果 CMS 发送的话）
+      window.addEventListener('message', function() { sendToken(); });
 
-      // 方案2：800ms 后自动发送（兜底）
+      // 兜底：等待 800ms 让 CMS 准备好监听器
       setTimeout(sendToken, 800);
     })();
   </script>

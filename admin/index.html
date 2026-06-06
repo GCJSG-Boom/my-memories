@@ -4,18 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>内容管理 · 时光札记</title>
-  <!-- Decap CMS 脚本 -->
-  <script src="https://unpkg.com/decap-cms@3/dist/decap-cms.js"></script>
-  <!-- 自定义预览样式（可选） -->
-  <style>
-    /* 让 CMS 编辑器的中文字体更好看 */
-    .css-1l2v4q1, .css-1pwx08f, .css-10w8wke {
-      font-family: 'Noto Sans SC', 'Helvetica Neue', Arial, sans-serif !important;
-    }
-  </style>
 </head>
 <body>
-  <!-- Decap CMS 会自动挂载到这个页面 -->
-  <!-- 无需额外 HTML，CMS 会渲染完整的后台界面 -->
+  <!-- 加载提示（CMS 启动后会自动替换） -->
+  <div id="nc-loading" style="font-family:sans-serif;text-align:center;margin-top:80px;color:#888;">
+    <p>正在加载管理后台...</p>
+  </div>
+
+  <!-- Decap CMS 脚本（从 jsdelivr CDN 加载，更稳定） -->
+  <script src="https://cdn.jsdelivr.net/npm/decap-cms@3/dist/decap-cms.js"></script>
+
+  <script>
+    // 检查 CMS 是否成功初始化
+    var loadingEl = document.getElementById('nc-loading');
+    if (loadingEl) {
+      setTimeout(function() {
+        // 6 秒后如果还在显示「加载中」，说明出问题了
+        if (loadingEl.style.display !== 'none' && loadingEl.offsetParent !== null) {
+          loadingEl.innerHTML = '<h2 style="color:#c0392b;">⚠️ 加载失败</h2>' +
+            '<p>请检查：</p>' +
+            '<ol style="display:inline-block;text-align:left;">' +
+            '<li>是否已访问 <a href="/admin/setup.html">/admin/setup.html</a> 设置 Token</li>' +
+            '<li>网络连接是否正常（需加载 CDN 资源）</li>' +
+            '<li>打开浏览器控制台（F12）查看具体错误</li>' +
+            '</ol>' +
+            '<p style="margin-top:20px;"><a href="/admin/setup.html">前往设置页面 →</a></p>';
+        }
+      }, 6000);
+    }
+  </script>
 </body>
 </html>
