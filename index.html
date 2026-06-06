@@ -35,9 +35,9 @@
         <div class="hero-overlay"></div>
         <div class="hero-particles" id="particles"></div>
         <div class="hero-content">
-            <p class="hero-subtitle fade-up">记录每一个值得铭记的瞬间</p>
-            <h1 class="hero-title fade-up delay-1">时光札记</h1>
-            <p class="hero-desc fade-up delay-2">用影像、声音与文字，<br>编织属于自己的时光长廊</p>
+            <p class="hero-subtitle fade-up" id="heroSubtitle">记录每一个值得铭记的瞬间</p>
+            <h1 class="hero-title fade-up delay-1" id="heroTitle">时光札记</h1>
+            <p class="hero-desc fade-up delay-2" id="heroDesc">用影像、声音与文字，<br>编织属于自己的时光长廊</p>
             <div class="hero-scroll fade-up delay-3">
                 <span>向下探索</span>
                 <i class="fas fa-chevron-down"></i>
@@ -52,7 +52,7 @@
             <p class="section-subtitle">每一步，都算数</p>
         </div>
 
-        <div class="timeline">
+        <div class="timeline" id="timelineContainer">
 
             <!-- 条目示例 1 — 视频记忆 -->
             <article class="timeline-card reveal" data-date="2025-12-25">
@@ -223,7 +223,7 @@
             <h2 class="section-title">映像集</h2>
             <p class="section-subtitle">定格光影，收藏美好</p>
         </div>
-        <div class="gallery-masonry">
+        <div class="gallery-masonry" id="galleryContainer">
             <div class="gallery-item tall" data-lightbox="映像 · 1">
                 <img src="https://picsum.photos/seed/g1/600/800" alt="Gallery image" loading="lazy">
                 <div class="gallery-item-overlay"><span>晨光</span></div>
@@ -265,7 +265,7 @@
             <h2 class="section-title">音乐盒</h2>
             <p class="section-subtitle">旋律里的故事</p>
         </div>
-        <div class="music-grid">
+        <div class="music-grid" id="musicContainer">
             <!-- 音乐卡片 1 — 渡尘寰 B站 -->
             <div class="music-card reveal">
                 <div class="music-card-cover">
@@ -318,10 +318,10 @@
     <section class="about-section" id="about">
         <div class="about-card reveal">
             <div class="about-avatar">
-                <img src="https://picsum.photos/seed/avatar/200/200" alt="头像" loading="lazy">
+                <img src="https://picsum.photos/seed/avatar/200/200" alt="头像" loading="lazy" id="aboutAvatar">
             </div>
-            <h2>关于我</h2>
-            <p>
+            <h2 id="aboutTitle">关于我</h2>
+            <p id="aboutBody">
                 一个热爱生活、喜欢记录的人。<br>
                 这里是我的一方小天地，收藏着走过的路、听过的歌、看过的风景。<br>
                 希望这些碎片时光，也能温暖到偶然路过的你。
@@ -337,8 +337,8 @@
 
     <!-- ===== 页脚 ===== -->
     <footer class="footer">
-        <p>© 2025 时光札记 · 用热爱记录生活</p>
-        <p class="footer-quote">「我们所经历的每个平凡的日常，也许就是连续发生的奇迹。」</p>
+        <p id="footerCopyright">© 2025 时光札记 · 用热爱记录生活</p>
+        <p class="footer-quote" id="footerQuote">「我们所经历的每个平凡的日常，也许就是连续发生的奇迹。」</p>
     </footer>
 
     <!-- ===== 灯箱 ===== -->

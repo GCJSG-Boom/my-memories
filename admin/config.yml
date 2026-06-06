@@ -1,0 +1,170 @@
+# ============================================
+# Decap CMS 配置文件
+# 时光札记 · My Memory Journal
+# ============================================
+
+# ----- 后台基础设置 -----
+backend:
+  name: github
+  repo: GCJSG-Boom/my-memories              # 你的 GitHub 用户名/仓库名
+  branch: main                               # 主分支（提交到这个分支会自动触发 Vercel 部署）
+  base_url: https://api.github.com           # GitHub API 地址
+  auth_endpoint: https://你的域名.vercel.app/api/auth  # ⚠️ 请替换为你的 Vercel 域名！
+
+# ----- 媒体文件（图片上传）存储位置 -----
+media_folder: "assets/uploads"               # 上传的图片存在仓库的哪个目录
+public_folder: "/assets/uploads"             # 图片在网站上的访问路径
+
+# ----- 网站地址 -----
+site_url: "https://你的域名.vercel.app"       # ⚠️ 请替换为你的 Vercel 域名
+display_url: "https://你的域名.vercel.app"
+logo_url: "https://picsum.photos/seed/logo/64/64"
+
+# ----- 后台界面语言 -----
+locale: "zh_Hans"
+
+# ----- 内容集合配置 -----
+collections:
+
+  # 1. 网站设置（单文件）
+  - name: "site"
+    label: "⚙️ 网站设置"
+    editor:
+      preview: false
+    files:
+      - name: "settings"
+        label: "全局设置"
+        file: "content/site.json"
+        fields:
+          - label: "英雄区 (Hero)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "副标题", name: "hero_subtitle", widget: "string"}
+              - {label: "主标题", name: "hero_title", widget: "string"}
+              - {label: "描述文字", name: "hero_desc", widget: "text"}
+          - label: "关于我"
+            name: "about"
+            widget: "object"
+            fields:
+              - {label: "标题", name: "about_title", widget: "string"}
+              - {label: "正文", name: "about_body", widget: "text"}
+              - {label: "头像", name: "about_avatar", widget: "image"}
+          - label: "社交链接"
+            name: "social"
+            widget: "object"
+            fields:
+              - {label: "GitHub", name: "social_github", widget: "string"}
+              - {label: "Twitter", name: "social_twitter", widget: "string"}
+              - {label: "Instagram", name: "social_instagram", widget: "string"}
+              - {label: "Email", name: "social_email", widget: "string"}
+          - label: "页脚"
+            name: "footer"
+            widget: "object"
+            fields:
+              - {label: "版权文字", name: "footer_copyright", widget: "string"}
+              - {label: "引言", name: "footer_quote", widget: "string"}
+
+  # 2. 时光轴（单文件 JSON 列表）
+  - name: "timeline"
+    label: "📅 时光轴"
+    editor:
+      preview: false
+    files:
+      - name: "entries"
+        label: "时光轴条目"
+        file: "content/timeline.json"
+        fields:
+          - name: "entries"
+            label: "条目列表"
+            widget: "list"
+            summary: "{{title}} — {{date}}"
+            fields:
+              - {label: "日期", name: "date", widget: "date", format: "YYYY-MM-DD"}
+              - label: "标签类型"
+                name: "tag_type"
+                widget: "select"
+                options:
+                  - {label: "视频", value: "video"}
+                  - {label: "照片", value: "photo"}
+                  - {label: "音乐", value: "music"}
+                  - {label: "旅行", value: "travel"}
+                  - {label: "生活", value: "life"}
+              - {label: "标题", name: "title", widget: "string"}
+              - {label: "正文", name: "body", widget: "text"}
+              - label: "媒体类型"
+                name: "media_type"
+                widget: "select"
+                options:
+                  - {label: "图片", value: "image"}
+                  - {label: "视频", value: "video"}
+                  - {label: "音乐", value: "music"}
+              - label: "图片列表"
+                name: "images"
+                widget: "list"
+                summary: "{{caption}}"
+                fields:
+                  - {label: "图片", name: "src", widget: "image"}
+                  - {label: "说明", name: "caption", widget: "string"}
+                  - {label: "竖构图", name: "portrait", widget: "boolean", default: false, required: false}
+              - {label: "视频地址 (mp4)", name: "video_url", widget: "string", required: false}
+              - {label: "视频封面图", name: "video_poster", widget: "image", required: false}
+              - {label: "音乐地址 (mp3)", name: "audio_url", widget: "string", required: false}
+              - {label: "曲名", name: "audio_title", widget: "string", required: false}
+              - {label: "艺术家", name: "audio_artist", widget: "string", required: false}
+              - {label: "专辑封面", name: "audio_cover", widget: "image", required: false}
+              - {label: "地点", name: "location", widget: "string", required: false}
+
+  # 3. 映像集（单文件 JSON 列表）
+  - name: "gallery"
+    label: "🖼️ 映像集"
+    editor:
+      preview: false
+    files:
+      - name: "images"
+        label: "映像集图片"
+        file: "content/gallery.json"
+        fields:
+          - name: "images"
+            label: "图片列表"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - {label: "标题", name: "title", widget: "string"}
+              - {label: "图片", name: "image", widget: "image"}
+              - label: "尺寸"
+                name: "size"
+                widget: "select"
+                options:
+                  - {label: "默认（正方形）", value: ""}
+                  - {label: "竖长", value: "tall"}
+                  - {label: "横宽", value: "wide"}
+                  - {label: "大图（横宽+竖长）", value: "wide tall"}
+                default: ""
+
+  # 4. 音乐盒（单文件 JSON 列表）
+  - name: "music"
+    label: "🎵 音乐盒"
+    editor:
+      preview: false
+    files:
+      - name: "songs"
+        label: "音乐列表"
+        file: "content/music.json"
+        fields:
+          - name: "songs"
+            label: "音乐列表"
+            widget: "list"
+            summary: "{{title}} — {{artist}}"
+            fields:
+              - {label: "歌曲名", name: "title", widget: "string"}
+              - {label: "艺术家", name: "artist", widget: "string"}
+              - {label: "封面图", name: "cover", widget: "image", required: false}
+              - label: "音乐类型"
+                name: "type"
+                widget: "select"
+                options:
+                  - {label: "B站嵌入", value: "bilibili"}
+                  - {label: "音频文件", value: "audio"}
+              - {label: "B站 BV 号", name: "bvid", widget: "string", required: false}
+              - {label: "音频地址 (mp3)", name: "audio_url", widget: "string", required: false}

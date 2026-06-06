@@ -1,0 +1,28 @@
+{
+  "songs": [
+    {
+      "title": "渡尘寰",
+      "artist": "胡夏",
+      "cover": "",
+      "type": "bilibili",
+      "bvid": "BV1gzjRzAERj",
+      "audio_url": ""
+    },
+    {
+      "title": "起风了",
+      "artist": "买辣椒也用券",
+      "cover": "https://picsum.photos/seed/music2/400/300",
+      "type": "audio",
+      "bvid": "",
+      "audio_url": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+    },
+    {
+      "title": "平凡之路",
+      "artist": "朴树",
+      "cover": "https://picsum.photos/seed/music3/400/300",
+      "type": "audio",
+      "bvid": "",
+      "audio_url": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+    }
+  ]
+}

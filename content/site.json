@@ -1,0 +1,22 @@
+{
+  "hero": {
+    "hero_subtitle": "记录每一个值得铭记的瞬间",
+    "hero_title": "时光札记",
+    "hero_desc": "用影像、声音与文字，<br>编织属于自己的时光长廊"
+  },
+  "about": {
+    "about_title": "关于我",
+    "about_body": "一个热爱生活、喜欢记录的人。\n这里是我的一方小天地，收藏着走过的路、听过的歌、看过的风景。\n希望这些碎片时光，也能温暖到偶然路过的你。",
+    "about_avatar": "https://picsum.photos/seed/avatar/200/200"
+  },
+  "social": {
+    "social_github": "#",
+    "social_twitter": "#",
+    "social_instagram": "#",
+    "social_email": "#"
+  },
+  "footer": {
+    "footer_copyright": "© 2025 时光札记 · 用热爱记录生活",
+    "footer_quote": "「我们所经历的每个平凡的日常，也许就是连续发生的奇迹。」"
+  }
+}

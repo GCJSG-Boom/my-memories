@@ -1,0 +1,89 @@
+{
+  "entries": [
+    {
+      "date": "2025-12-25",
+      "tag_type": "video",
+      "title": "圣诞夜的温暖",
+      "body": "那天晚上，朋友们聚在一起，交换礼物、分享故事。窗外飘着雪，屋内暖意融融。记录下这个美好的夜晚，愿每一年都能如此温馨。",
+      "media_type": "video",
+      "video_url": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "video_poster": "https://picsum.photos/seed/christmas/800/450",
+      "images": [],
+      "audio_url": "",
+      "audio_title": "",
+      "audio_artist": "",
+      "audio_cover": "",
+      "location": "北京 · 家中"
+    },
+    {
+      "date": "2025-11-08",
+      "tag_type": "photo",
+      "title": "秋日徒步 · 香山红叶",
+      "body": "深秋的香山，漫山遍野的红叶像火焰一样燃烧。沿着山路慢慢走，每一步都是风景。登顶那一刻，整座城市尽收眼底，所有的疲惫都烟消云散。",
+      "media_type": "image",
+      "video_url": "",
+      "video_poster": "",
+      "images": [
+        {"src": "https://picsum.photos/seed/autumn1/600/400", "caption": "香山红叶 · 山路"},
+        {"src": "https://picsum.photos/seed/autumn2/600/400", "caption": "香山红叶 · 远眺"},
+        {"src": "https://picsum.photos/seed/autumn3/600/400", "caption": "香山红叶 · 落叶"}
+      ],
+      "audio_url": "",
+      "audio_title": "",
+      "audio_artist": "",
+      "audio_cover": "",
+      "location": "北京 · 香山公园"
+    },
+    {
+      "date": "2025-09-15",
+      "tag_type": "music",
+      "title": "第一次弹成完整的曲子",
+      "body": "练了三个月的《River Flows in You》，今天终于能完整地弹下来了。虽然还有些磕绊，但那种成就感无与伦比。音乐真是最好的陪伴。",
+      "media_type": "music",
+      "video_url": "",
+      "video_poster": "",
+      "images": [],
+      "audio_url": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+      "audio_title": "River Flows in You",
+      "audio_artist": "Yiruma",
+      "audio_cover": "https://picsum.photos/seed/piano/200/200",
+      "location": "家中 · 书房"
+    },
+    {
+      "date": "2025-07-20",
+      "tag_type": "travel",
+      "title": "云南之旅 · 大理的风花雪月",
+      "body": "期待已久的大理之行终于成行。洱海的蓝、苍山的雪、古城的慢时光——一切都如诗如画。在洱海边骑行的那个下午，是我今年最放松的时刻。",
+      "media_type": "image",
+      "video_url": "",
+      "video_poster": "",
+      "images": [
+        {"src": "https://picsum.photos/seed/dali1/400/600", "caption": "大理 · 洱海骑行", "portrait": true},
+        {"src": "https://picsum.photos/seed/dali2/600/400", "caption": "大理 · 古城夜色", "portrait": false},
+        {"src": "https://picsum.photos/seed/dali3/600/400", "caption": "大理 · 苍山", "portrait": false}
+      ],
+      "audio_url": "",
+      "audio_title": "",
+      "audio_artist": "",
+      "audio_cover": "",
+      "location": "云南 · 大理"
+    },
+    {
+      "date": "2025-05-01",
+      "tag_type": "life",
+      "title": "学会做第一道菜",
+      "body": "五一假期，决定学做一道红烧排骨。跟着视频教程一步步来，虽然卖相一般，但味道出奇地好！做饭这件事，好像也没有想象中那么难。",
+      "media_type": "image",
+      "video_url": "",
+      "video_poster": "",
+      "images": [
+        {"src": "https://picsum.photos/seed/cooking/800/450", "caption": "第一次做的红烧排骨", "portrait": false}
+      ],
+      "audio_url": "",
+      "audio_title": "",
+      "audio_artist": "",
+      "audio_cover": "",
+      "location": "家中 · 厨房"
+    }
+  ]
+}

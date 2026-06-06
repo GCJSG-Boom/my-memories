@@ -1,0 +1,11 @@
+{
+  "name": "my-memories",
+  "private": true,
+  "description": "时光札记 · My Memory Journal — 个人时光记录网站",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@vercel/node": "^3.2.0"
+  }
+}
