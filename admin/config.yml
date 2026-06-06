@@ -8,7 +8,8 @@ backend:
   name: github
   repo: GCJSG-Boom/my-memories
   branch: main
-  auth_endpoint: https://my-memories-phi.vercel.app/admin/auth.html
+  base_url: https://my-memories-phi.vercel.app
+  auth_endpoint: admin/auth.html
 
 # ----- 媒体文件（图片上传）存储位置 -----
 media_folder: "assets/uploads"               # 上传的图片存在仓库的哪个目录
