@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMS 设置 · 时光札记</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans SC', 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(160deg, #2c2416 0%, #4a3720 40%, #3d2e1a 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+    .card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 48px 40px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+    }
+    .card h1 { font-size: 1.6rem; margin-bottom: 8px; font-family: 'Noto Serif SC', Georgia, serif; }
+    .card p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 28px; line-height: 1.7; }
+    .card a { color: #e8d5a3; }
+    .card label { display: block; text-align: left; font-size: 0.85rem; margin-bottom: 8px; color: rgba(255,255,255,0.7); }
+    .card input {
+      width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(0,0,0,0.3); color: #fff; font-size: 0.9rem; font-family: monospace;
+      margin-bottom: 20px; outline: none; transition: border 0.3s;
+    }
+    .card input:focus { border-color: #c79a4b; }
+    .card button {
+      width: 100%; padding: 14px; border-radius: 10px; border: none;
+      background: #c79a4b; color: #fff; font-size: 1rem; font-weight: 600;
+      cursor: pointer; transition: background 0.3s; letter-spacing: 0.05em;
+    }
+    .card button:hover { background: #a07830; }
+    .card .status { margin-top: 16px; font-size: 0.85rem; min-height: 24px; }
+    .card .status.success { color: #5a9e8c; }
+    .card .status.error { color: #e07b5a; }
+    .step { background: rgba(255,255,255,0.05); border-radius: 10px; padding: 16px; margin-bottom: 20px; text-align: left; }
+    .step ol { padding-left: 20px; color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 2; }
+    .step a { color: #e8d5a3; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🔐 初始设置</h1>
+    <p>只需设置一次，之后就能直接编辑网站了</p>
+
+    <div class="step">
+      <ol>
+        <li>打开 <a href="https://github.com/settings/tokens/new" target="_blank">github.com/settings/tokens/new</a></li>
+        <li>Note 填「时光札记」，Expiration 选 <b>No expiration</b></li>
+        <li>勾选 ✅ <b>repo</b>，点 Generate token</li>
+        <li>复制生成的 <b>ghp_xxxx</b>，粘贴到下面</li>
+      </ol>
+    </div>
+
+    <label for="token">GitHub Token</label>
+    <input type="password" id="token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+    <button onclick="saveToken()">保存并激活</button>
+    <div class="status" id="status"></div>
+  </div>
+
+  <script>
+    async function saveToken() {
+      var token = document.getElementById('token').value.trim();
+      var status = document.getElementById('status');
+
+      if (!token || !token.startsWith('ghp_')) {
+        status.className = 'status error';
+        status.textContent = '请输入有效的 GitHub Token（以 ghp_ 开头）';
+        return;
+      }
+
+      // 把 token 存到 cookie（1 年有效，SameSite=Lax，同域名可读）
+      var d = new Date();
+      d.setFullYear(d.getFullYear() + 1);
+      document.cookie = 'github_token=' + token + '; expires=' + d.toUTCString() + '; path=/; SameSite=Lax';
+
+      // 验证 token 是否有效
+      try {
+        var resp = await fetch('https://api.github.com/user', {
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+        if (resp.ok) {
+          var user = await resp.json();
+          status.className = 'status success';
+          status.textContent = '✅ 设置成功！' + user.login + '，正在跳转到管理后台...';
+          setTimeout(function() {
+            window.location.href = '/admin/';
+          }, 1500);
+        } else {
+          status.className = 'status error';
+          status.textContent = 'Token 无效，请检查是否正确复制';
+        }
+      } catch(e) {
+        // API 可能被拦截，但还是尝试保存
+        status.className = 'status success';
+        status.textContent = '✅ 已保存！正在跳转到管理后台...';
+        setTimeout(function() {
+          window.location.href = '/admin/';
+        }, 1500);
+      }
+    }
+  </script>
+</body>
+</html>
