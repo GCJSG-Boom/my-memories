@@ -1,94 +1,28 @@
 /**
  * ============================================
- * Vercel Serverless Function — GitHub OAuth 回调
+ * Vercel Serverless Function — 认证处理
  * ============================================
  *
- * 这个文件会被 Vercel 自动部署为 /api/auth 接口。
- * Decap CMS 通过这个接口完成 GitHub 登录认证。
+ * 简化方案：使用 GitHub Personal Access Token (Classic)
+ * 无需 OAuth App！只需要一个 Vercel 环境变量 GITHUB_PAT
  *
- * 使用前请先在 Vercel 项目设置中添加环境变量：
- *   OAUTH_CLIENT_ID     — GitHub OAuth App 的 Client ID
- *   OAUTH_CLIENT_SECRET — GitHub OAuth App 的 Client Secret
- *   OAUTH_REDIRECT_URI  — 回调地址，例如 https://你的域名.vercel.app/api/auth
+ * 使用方法：
+ * 1. 去 https://github.com/settings/tokens 创建一个 Token (Classic)
+ * 2. 勾选 repo 权限
+ * 3. 在 Vercel 项目设置中添加环境变量：
+ *    名称: GITHUB_PAT
+ *    值:   你创建的 Token
  */
 
 export default async function handler(req, res) {
-  const { code } = req.query;
+  var token = process.env.GITHUB_PAT;
 
-  // ---------- 第一步：如果没有 code，说明是初始请求，重定向到 GitHub ----------
-  if (!code) {
-    const clientId = process.env.OAUTH_CLIENT_ID;
-    const redirectUri = process.env.OAUTH_REDIRECT_URI;
-
-    if (!clientId || !redirectUri) {
-      res.status(500).send("缺少 OAUTH_CLIENT_ID 或 OAUTH_REDIRECT_URI 环境变量");
-      return;
-    }
-
-    // 构建 GitHub 授权 URL（请求 repo 和 user 权限）
-    const githubAuthUrl =
-      "https://github.com/login/oauth/authorize" +
-      `?client_id=${encodeURIComponent(clientId)}` +
-      `&redirect_uri=${encodeURIComponent(redirectUri)}` +
-      `&scope=${encodeURIComponent("repo,user")}`;
-
-    // 重定向到 GitHub 授权页面
-    res.writeHead(302, { Location: githubAuthUrl });
-    res.end();
+  if (!token) {
+    res.status(500).send("错误：未设置 GITHUB_PAT 环境变量。请在 Vercel 后台 Settings → Environment Variables 中添加。");
     return;
   }
 
-  // ---------- 第二步：GitHub 授权后回调，用 code 换取 token ----------
-  try {
-    const tokenResponse = await fetch(
-      "https://github.com/login/oauth/access_token",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          client_id: process.env.OAUTH_CLIENT_ID,
-          client_secret: process.env.OAUTH_CLIENT_SECRET,
-          code: code,
-          redirect_uri: process.env.OAUTH_REDIRECT_URI,
-        }),
-      }
-    );
-
-    const tokenData = await tokenResponse.json();
-
-    if (tokenData.error) {
-      res.status(400).send(`GitHub 认证失败: ${tokenData.error_description || tokenData.error}`);
-      return;
-    }
-
-    // ---------- 第三步：返回 HTML 页面，通过 postMessage 将 token 传给 CMS ----------
-    res.setHeader("Content-Type", "text/html; charset=utf-8");
-    res.send(`
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head><meta charset="UTF-8"></head>
-<body>
-  <p style="text-align:center;font-family:sans-serif;margin-top:40px;">
-    认证成功 ✅ 正在跳转回管理后台...
-  </p>
-  <script>
-    (function() {
-      // 将 token 发送给 Decap CMS 窗口
-      window.opener.postMessage(
-        { token: "${tokenData.access_token}", provider: "github", backendName: "github" },
-        window.opener.location.origin
-      );
-      // 关闭当前窗口
-      window.close();
-    })();
-  </script>
-</body>
-</html>
-    `);
-  } catch (error) {
-    res.status(500).send(`服务器错误: ${error.message}`);
-  }
+  // 返回一个页面，把 token 通过 postMessage 传给 Decap CMS
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  res.send('<!DOCTYPE html>\n<html lang="zh-CN">\n<head><meta charset="UTF-8"></head>\n<body>\n  <p style="text-align:center;font-family:sans-serif;margin-top:40px;">认证中...</p>\n  <script>\n    (function() {\n      var TOKEN = "' + token + '";\n      var sent = false;\n      function send() {\n        if (sent) return;\n        sent = true;\n        window.opener.postMessage(\n          { token: TOKEN, provider: "github", backendName: "github" },\n          window.opener.location.origin\n        );\n        setTimeout(function() { window.close(); }, 200);\n      }\n      window.addEventListener("message", function(e) { send(); });\n      setTimeout(send, 800);\n    })();\n  </script>\n</body>\n</html>');
 }
