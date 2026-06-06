@@ -6,26 +6,6 @@
   <title>内容管理 · 时光札记</title>
 </head>
 <body>
-  <div id="nc-loading" style="font-family:sans-serif;text-align:center;margin-top:80px;color:#888;">
-    <p>⏳ 正在加载管理后台...</p>
-  </div>
-
-  <!-- 使用最稳定的 Netlify CMS v2 -->
   <script src="https://cdn.jsdelivr.net/npm/netlify-cms@2/dist/netlify-cms.js"></script>
-
-  <script>
-    var loadingEl = document.getElementById('nc-loading');
-    setTimeout(function() {
-      if (loadingEl && loadingEl.offsetParent !== null) {
-        loadingEl.innerHTML = '<h2 style="color:#c0392b;">加载超时</h2>' +
-          '<p>请尝试：</p>' +
-          '<ol style="display:inline-block;text-align:left;">' +
-          '<li>刷新页面（Ctrl+R）</li>' +
-          '<li>如果没有 Token，先去 <a href="/admin/setup.html">设置页面</a></li>' +
-          '<li>按 F12 打开控制台查看错误</li>' +
-          '</ol>';
-      }
-    }, 10000);
-  </script>
 </body>
 </html>
